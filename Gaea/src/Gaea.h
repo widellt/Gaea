@@ -2,6 +2,7 @@
 
 // For use by Gaea applications  
 #include "Gaea/Application.h"
+#include "Gaea/Log.h"
 #include <stdio.h>
 
 // ---------Entry Point---------
