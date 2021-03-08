@@ -1,6 +1,3 @@
 [submodule "Gaea/vendor/spdlog"]
 	path = Gaea/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "Gaea/vendor/GLFW"]
-	path = Gaea/vendor/GLFW
-	url = https://github.com/widellt/glfw
