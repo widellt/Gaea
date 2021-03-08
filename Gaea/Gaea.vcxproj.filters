@@ -34,6 +34,7 @@
     <ClInclude Include="src\Gaea\Log.h">
       <Filter>Gaea</Filter>
     </ClInclude>
+    <ClInclude Include="src\gapch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Gaea\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Gaea\Log.cpp">
       <Filter>Gaea</Filter>
     </ClCompile>
+    <ClCompile Include="src\gapch.cpp" />
   </ItemGroup>
 </Project>

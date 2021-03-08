@@ -1,3 +1,4 @@
+#include "gapch.h"
 #include "Application.h"
 #include "Gaea/Events/ApplicationEvent.h"
 #include "Gaea/Log.h"

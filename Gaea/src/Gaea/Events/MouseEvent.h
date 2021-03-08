@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Event.h"
-#include <sstream>
 
 namespace Gaea {
 	class GAEA_API MouseMovedEvent : public Event {

@@ -1,10 +1,6 @@
 #pragma once
 
-
 #include "Gaea/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Gaea {
 	// Events in Gaea are currently blocking, meaning when an event 
