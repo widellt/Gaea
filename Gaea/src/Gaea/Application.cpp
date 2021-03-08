@@ -1,4 +1,6 @@
 #include "Application.h"
+#include "Gaea/Events/ApplicationEvent.h"
+#include "Gaea/Log.h"
 
 namespace Gaea {
 
@@ -11,7 +13,13 @@ namespace Gaea {
 	}
 
 	void Application::Run() {
-		while (true);
+		WindowResizeEvent e(1280, 720);
 
+		if (e.IsInCategory(EventCategoryApplication)) {
+			GA_TRACE(e);
+		}
+		if (e.IsInCategory(EventCategoryInput)) {
+			GA_TRACE(e);
+		}
 	}
 }

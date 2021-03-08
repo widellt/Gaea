@@ -4,6 +4,9 @@
     <Filter Include="Gaea">
       <UniqueIdentifier>{73A8857C-5FDF-860D-08CC-6C10F4E1020F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Gaea\Events">
+      <UniqueIdentifier>{F7F4A0B5-63AA-19AB-EC9E-1382585310AF}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Gaea.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Gaea\EntryPoint.h">
       <Filter>Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Events\ApplicationEvent.h">
+      <Filter>Gaea\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Events\Event.h">
+      <Filter>Gaea\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Events\KeyEvent.h">
+      <Filter>Gaea\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Events\MouseEvent.h">
+      <Filter>Gaea\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Gaea\Log.h">
       <Filter>Gaea</Filter>
