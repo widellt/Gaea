@@ -1,5 +1,5 @@
 #pragma once
-
+#include "gapch.h"
 #include "Gaea/Core.h"
 
 namespace Gaea {
