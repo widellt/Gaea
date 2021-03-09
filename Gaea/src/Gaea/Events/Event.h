@@ -34,8 +34,10 @@ namespace Gaea {
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class GAEA_API Event {
-		friend class EventDispatcher;
+		//friend class EventDispatcher;
 	public:
+		bool Handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -44,8 +46,6 @@ namespace Gaea {
 		inline bool IsInCategory(EventCategory category) {
 			return (GetCategoryFlags() & category);
 		}
-	protected:
-		bool _Handled = false;
 	};
 
 	class EventDispatcher {
@@ -60,7 +60,7 @@ namespace Gaea {
 		template <typename T>
 		bool Dispatch(EventFn<T> func) {
 			if (_Event.GetEventType() == T::GetStaticType()) {
-				_Event._Handled = func(*(T*)&_Event);
+				_Event.Handled = func(*(T*)&_Event);
 				return true;
 			}
 			return false;

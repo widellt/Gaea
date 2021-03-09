@@ -14,8 +14,16 @@ namespace Gaea {
 		_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
 
-	Application::~Application() {
+	Application::~Application() 
+	{
+	}
 
+	void Application::PushLayer(Layer* layer) {
+		_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer) {
+		_LayerStack.PushOverlay(layer);
 	}
 
 	void Application::OnEvent(Event& e)
@@ -23,7 +31,14 @@ namespace Gaea {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
 
-		GA_CORE_TRACE("{0}", e);
+		//GA_CORE_TRACE("{0}", e);
+
+		for (auto it = _LayerStack.end(); it != _LayerStack.begin(); ) {
+			(*--it)->OnEvent(e);
+			// If an overlay handles an event, it won't propagate to layers here
+			if (e.Handled)
+				break;
+		}
 	}
 
 
@@ -31,6 +46,11 @@ namespace Gaea {
 		while (_Running) {
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : _LayerStack) {
+				layer->OnUpdate();
+			}
+
 			_Window->OnUpdate();
 		}
 	}

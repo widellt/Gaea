@@ -4,6 +4,8 @@ c:\dev\gaea\bin-int\release-windows-x86_64\gaea\gapch.obj
 c:\dev\gaea\bin-int\release-windows-x86_64\gaea\windowswindow.obj
 c:\dev\gaea\bin-int\release-windows-x86_64\gaea\log.obj
 c:\dev\gaea\bin-int\release-windows-x86_64\gaea\application.obj
+c:\dev\gaea\bin-int\release-windows-x86_64\gaea\layer.obj
+c:\dev\gaea\bin-int\release-windows-x86_64\gaea\layerstack.obj
 c:\dev\gaea\bin\release-windows-x86_64\gaea\gaea.lib
 c:\dev\gaea\bin\release-windows-x86_64\gaea\gaea.exp
 c:\dev\gaea\bin\release-windows-x86_64\gaea\gaea.dll

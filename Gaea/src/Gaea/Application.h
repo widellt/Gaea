@@ -1,10 +1,13 @@
 #pragma once
 
 #include "Core.h"
+
+#include "Window.h"
+#include "LayerStack.h"
 #include "Events/Event.h"
 #include "Gaea/Events/ApplicationEvent.h"
 
-#include "Window.h"
+
 
 
 namespace Gaea {
@@ -17,11 +20,15 @@ namespace Gaea {
 		void Run();
 
 		void OnEvent(Event& e);
+
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> _Window;
 		bool _Running = true;
+		LayerStack _LayerStack;
 	};
 
 	// To be defined in Client
