@@ -2,7 +2,10 @@
 
 #include "Core.h"
 #include "Events/Event.h"
+#include "Gaea/Events/ApplicationEvent.h"
+
 #include "Window.h"
+
 
 namespace Gaea {
 	class GAEA_API Application
@@ -12,7 +15,11 @@ namespace Gaea {
 		virtual ~Application();
 
 		void Run();
+
+		void OnEvent(Event& e);
 	private:
+		bool OnWindowClose(WindowCloseEvent& e);
+
 		std::unique_ptr<Window> _Window;
 		bool _Running = true;
 	};
