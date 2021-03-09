@@ -7,6 +7,12 @@
     <Filter Include="Gaea\Events">
       <UniqueIdentifier>{F7F4A0B5-63AA-19AB-EC9E-1382585310AF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Gaea\Platform">
+      <UniqueIdentifier>{76973343-fb67-4979-bc11-3fff820dce92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gaea\Platform\Windows">
+      <UniqueIdentifier>{6cd82186-f1d8-47c3-8bcc-10185cdd3daf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Gaea.h" />
@@ -35,6 +41,12 @@
       <Filter>Gaea</Filter>
     </ClInclude>
     <ClInclude Include="src\gapch.h" />
+    <ClInclude Include="src\Gaea\Window.h">
+      <Filter>Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Windows\WindowsWindow.h">
+      <Filter>Gaea\Platform\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Gaea\Application.cpp">
@@ -44,5 +56,8 @@
       <Filter>Gaea</Filter>
     </ClCompile>
     <ClCompile Include="src\gapch.cpp" />
+    <ClCompile Include="src\Gaea\Windows\WindowsWindow.cpp">
+      <Filter>Gaea\Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

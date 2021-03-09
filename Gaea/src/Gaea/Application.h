@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "Events/Event.h"
+#include "Window.h"
 
 namespace Gaea {
 	class GAEA_API Application
@@ -11,6 +12,9 @@ namespace Gaea {
 		virtual ~Application();
 
 		void Run();
+	private:
+		std::unique_ptr<Window> _Window;
+		bool _Running = true;
 	};
 
 	// To be defined in Client
