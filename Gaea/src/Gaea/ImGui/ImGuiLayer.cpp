@@ -21,7 +21,6 @@ namespace Gaea {
 		ImGui::StyleColorsDark();
 
 		ImGuiIO& io = ImGui::GetIO();
-		io.BackendRendererName = "imgui_impl_opengl3";
 		io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
 		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos; 
 
@@ -48,7 +47,7 @@ namespace Gaea {
 		io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
 		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
 
-		ImGui_ImplOpenGL3_Init("version 410");
+		ImGui_ImplOpenGL3_Init(NULL);
 	}
 	void ImGuiLayer::OnDetach(){
 	}
@@ -67,7 +66,6 @@ namespace Gaea {
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);
 
-		ImGui::EndFrame();
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
