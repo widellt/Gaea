@@ -4,7 +4,6 @@
 #include "Gaea/Application.h"
 #include "Gaea/Layer.h"
 #include "Gaea/Log.h"
-#include <stdio.h>
 
 // ---------Entry Point---------
 #include "Gaea/EntryPoint.h"

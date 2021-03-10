@@ -52,7 +52,8 @@ project "Gaea"
 
 		defines {
 			"GA_PLATFORM_WINDOWS",
-			"GA_BUILD_DLL"
+			"GA_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 		
 		postbuildcommands {

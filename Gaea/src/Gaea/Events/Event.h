@@ -34,7 +34,6 @@ namespace Gaea {
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class GAEA_API Event {
-		//friend class EventDispatcher;
 	public:
 		bool Handled = false;
 

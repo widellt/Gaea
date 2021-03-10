@@ -3,12 +3,9 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "LayerStack.h"
-#include "Events/Event.h"
+#include "Gaea/LayerStack.h"
+#include "Gaea/Events/Event.h"
 #include "Gaea/Events/ApplicationEvent.h"
-
-
-
 
 namespace Gaea {
 	class GAEA_API Application

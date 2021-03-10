@@ -1,3 +1,23 @@
-﻿     Creating library ..\bin\Release-windows-x86_64\Gaea\Gaea.lib and object ..\bin\Release-windows-x86_64\Gaea\Gaea.exp
+﻿cl : command line warning D9025: overriding '/MT' with '/MD'
+  Application.cpp
+C:\dev\Gaea\Gaea\src\Gaea\Layer.h(20,25): warning C4251: 'Gaea::Layer::_DebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Gaea::Layer'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xstring(4648): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\dev\Gaea\Gaea\src\Gaea\LayerStack.h(21,30): warning C4251: 'Gaea::LayerStack::_Layers': class 'std::vector<Gaea::Layer *,std::allocator<Gaea::Layer *>>' needs to have dll-interface to be used by clients of class 'Gaea::LayerStack'
+C:\dev\Gaea\Gaea\src\Gaea\LayerStack.h(18): message : see declaration of 'std::vector<Gaea::Layer *,std::allocator<Gaea::Layer *>>'
+C:\dev\Gaea\Gaea\src\Gaea\LayerStack.h(22,45): warning C4251: 'Gaea::LayerStack::_LayerInsert': class 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>' needs to have dll-interface to be used by clients of class 'Gaea::LayerStack'
+          with
+          [
+              _Ty=Gaea::Layer *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\vector(440): message : see declaration of 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
+          with
+          [
+              _Ty=Gaea::Layer *
+          ]
+C:\dev\Gaea\Gaea\src\Gaea\Application.h(26,34): warning C4251: 'Gaea::Application::_Window': class 'std::unique_ptr<Gaea::Window,std::default_delete<Gaea::Window>>' needs to have dll-interface to be used by clients of class 'Gaea::Application'
+C:\dev\Gaea\Gaea\src\Gaea\Application.h(26): message : see declaration of 'std::unique_ptr<Gaea::Window,std::default_delete<Gaea::Window>>'
+  WindowsWindow.cpp
+  Generating Code...
+     Creating library ..\bin\Release-windows-x86_64\Gaea\Gaea.lib and object ..\bin\Release-windows-x86_64\Gaea\Gaea.exp
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Gaea.vcxproj -> C:\dev\Gaea\bin\Release-windows-x86_64\Gaea\Gaea.dll

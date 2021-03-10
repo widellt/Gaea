@@ -2,8 +2,8 @@
 #include "Application.h"
 
 #include "Gaea/Log.h"
-
-#include "GLFW/glfw3.h"
+#include <glad/glad.h>
+//#include <GLFW/glfw3.h>
 
 namespace Gaea {
 
@@ -30,8 +30,6 @@ namespace Gaea {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
-
-		//GA_CORE_TRACE("{0}", e);
 
 		for (auto it = _LayerStack.end(); it != _LayerStack.begin(); ) {
 			(*--it)->OnEvent(e);

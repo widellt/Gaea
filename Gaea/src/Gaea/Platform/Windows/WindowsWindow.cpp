@@ -5,6 +5,8 @@
 #include "Gaea/Events/KeyEvent.h"
 #include "Gaea/Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace Gaea {
 	static bool s_GLFWInitialized = false;
 
@@ -43,6 +45,8 @@ namespace Gaea {
 		_Window = glfwCreateWindow((int)props.Width, (int)props.Height, _Data.Title.c_str(), nullptr, nullptr);
 
 		glfwMakeContextCurrent(_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		GA_CORE_ASSERT(status, "Failed to initialize Glad!");
 		glfwSetWindowUserPointer(_Window, &_Data);
 		SetVSync(true);
 
