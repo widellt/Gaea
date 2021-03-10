@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>gapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GA_PLATFORM_WINDOWS;GA_BUILD_DLL;GLFW_INCLUDE_NONE;GA_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -103,7 +103,7 @@
       <PrecompiledHeaderFile>gapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GA_PLATFORM_WINDOWS;GA_BUILD_DLL;GLFW_INCLUDE_NONE;GA_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -130,7 +130,7 @@
       <PrecompiledHeaderFile>gapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GA_PLATFORM_WINDOWS;GA_BUILD_DLL;GLFW_INCLUDE_NONE;GA_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -160,19 +160,23 @@
     <ClInclude Include="src\Gaea\Events\Event.h" />
     <ClInclude Include="src\Gaea\Events\KeyEvent.h" />
     <ClInclude Include="src\Gaea\Events\MouseEvent.h" />
+    <ClInclude Include="src\Gaea\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Gaea\Layer.h" />
     <ClInclude Include="src\Gaea\LayerStack.h" />
     <ClInclude Include="src\Gaea\Log.h" />
-    <ClInclude Include="src\Gaea\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Gaea\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\gapch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Gaea\Application.cpp" />
+    <ClCompile Include="src\Gaea\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Gaea\Layer.cpp" />
     <ClCompile Include="src\Gaea\LayerStack.cpp" />
     <ClCompile Include="src\Gaea\Log.cpp" />
-    <ClCompile Include="src\Gaea\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\gapch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

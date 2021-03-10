@@ -12,7 +12,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Gaea/vendor/GLFW/include"
 IncludeDir["Glad"] = "Gaea/vendor/Glad/include"
-IncludeDir["ImGui"] = "Gaea/vendor/imgui/include"
+IncludeDir["ImGui"] = "Gaea/vendor/imgui"
 
 include "Gaea/vendor/GLFW"
 include "Gaea/vendor/Glad"

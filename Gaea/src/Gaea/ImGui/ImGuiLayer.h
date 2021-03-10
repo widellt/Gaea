@@ -1,0 +1,22 @@
+#pragma once
+
+#include "Gaea/Layer.h"
+
+namespace Gaea {
+	class ImGuiLayer : public Layer 
+	{
+	public:
+		ImGuiLayer();
+		~ImGuiLayer();
+
+		void OnAttach();
+		void OnDetach();
+		void OnUpdate();
+		void OnEvent(Event& event);
+
+	private:
+
+	};
+}
+
+
