@@ -9,12 +9,14 @@ namespace Gaea {
 
 #define BIND_EVENT_FN(x) (std::bind(&x, this, std::placeholders::_1)) 
 
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application() {
+		GA_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+
 		_Window = std::unique_ptr<Window>(Window::Create());
 		_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
-
-		unsigned int id;
-		glGenVertexArrays(1, &id);
 	}
 
 	Application::~Application() 
@@ -23,10 +25,12 @@ namespace Gaea {
 
 	void Application::PushLayer(Layer* layer) {
 		_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer) {
 		_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)

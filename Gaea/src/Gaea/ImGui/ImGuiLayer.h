@@ -3,7 +3,7 @@
 #include "Gaea/Layer.h"
 
 namespace Gaea {
-	class ImGuiLayer : public Layer 
+	class GAEA_API ImGuiLayer : public Layer 
 	{
 	public:
 		ImGuiLayer();
@@ -15,7 +15,7 @@ namespace Gaea {
 		void OnEvent(Event& event);
 
 	private:
-
+		float _Time = 0.0f;
 	};
 }
 

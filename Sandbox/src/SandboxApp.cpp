@@ -21,6 +21,7 @@ class Sandbox : public Gaea::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Gaea::ImGuiLayer());
 	}
 	
 	~Sandbox() {
