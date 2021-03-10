@@ -4,3 +4,6 @@
 [submodule "Gaea/vendor/GLFW"]
 	path = Gaea/vendor/GLFW
 	url = https://github.com/widellt/glfw
+[submodule "Gaea/vendor/imgui"]
+	path = Gaea/vendor/imgui
+	url = https://github.com/widellt/imgui

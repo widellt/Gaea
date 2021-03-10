@@ -2,8 +2,8 @@
 #include "Application.h"
 
 #include "Gaea/Log.h"
+
 #include <glad/glad.h>
-//#include <GLFW/glfw3.h>
 
 namespace Gaea {
 
@@ -12,6 +12,9 @@ namespace Gaea {
 	Application::Application() {
 		_Window = std::unique_ptr<Window>(Window::Create());
 		_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+
+		unsigned int id;
+		glGenVertexArrays(1, &id);
 	}
 
 	Application::~Application() 
