@@ -1,4 +1,5 @@
 workspace "Gaea"
+	startproject "Sandbox"
 	architecture "x64"
 
 	configurations{
@@ -7,8 +8,6 @@ workspace "Gaea"
 		"Dist"
 	}
 
-	startproject "Sandbox"
-
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}" 
 
 IncludeDir = {}
@@ -16,9 +15,11 @@ IncludeDir["GLFW"] = "Gaea/vendor/GLFW/include"
 IncludeDir["Glad"] = "Gaea/vendor/Glad/include"
 IncludeDir["ImGui"] = "Gaea/vendor/imgui"
 
-include "Gaea/vendor/GLFW"
-include "Gaea/vendor/Glad"
-include "Gaea/vendor/imgui"
+group "Dependencies"
+	include "Gaea/vendor/GLFW"
+	include "Gaea/vendor/Glad"
+	include "Gaea/vendor/imgui"
+group ""
 
 project "Gaea"
 	location "Gaea"
@@ -63,7 +64,7 @@ project "Gaea"
 		}
 		
 		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox\"")
 		}
 
 	filter "configurations:Debug" 

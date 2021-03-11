@@ -5,6 +5,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Gaea {
 
 #define BIND_EVENT_FN(x) (std::bind(&x, this, std::placeholders::_1)) 
@@ -55,6 +57,9 @@ namespace Gaea {
 			for (Layer* layer : _LayerStack) {
 				layer->OnUpdate();
 			}
+
+			auto [x, y] = Input::GetMousePos();
+			GA_TRACE("{0}, {1}", x, y);
 
 			_Window->OnUpdate();
 		}
