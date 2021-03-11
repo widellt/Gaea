@@ -58,9 +58,6 @@ namespace Gaea {
 				layer->OnUpdate();
 			}
 
-			auto [x, y] = Input::GetMousePos();
-			GA_TRACE("{0}, {1}", x, y);
-
 			_Window->OnUpdate();
 		}
 	}

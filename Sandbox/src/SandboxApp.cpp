@@ -8,11 +8,19 @@ public:
 	}
 
 	void OnUpdate() override {
-		GA_INFO("ExampleLayer::Update");
+		//GA_INFO("ExampleLayer::Update");
+		if (Gaea::Input::IsKeyPressed(GA_KEY_TAB))
+			GA_TRACE("Tab key is pressed! (poll)");
 	}
 
 	void OnEvent(Gaea::Event& event) override {
-		GA_TRACE("{0}", event);
+		//GA_TRACE("{0}", event);
+		if (event.GetEventType() == Gaea::EventType::KeyPressed) {
+			Gaea::KeyPressedEvent& e = (Gaea::KeyPressedEvent&) event;
+			if(e.GetKeyCode() == GA_KEY_TAB)
+				GA_TRACE("Tab key is pressed! (event)");
+			GA_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

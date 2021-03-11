@@ -159,9 +159,11 @@
     <ClInclude Include="src\Gaea\Events\MouseEvent.h" />
     <ClInclude Include="src\Gaea\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Gaea\Input.h" />
+    <ClInclude Include="src\Gaea\KeyCodes.h" />
     <ClInclude Include="src\Gaea\Layer.h" />
     <ClInclude Include="src\Gaea\LayerStack.h" />
     <ClInclude Include="src\Gaea\Log.h" />
+    <ClInclude Include="src\Gaea\MouseButtonCodes.h" />
     <ClInclude Include="src\Gaea\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />

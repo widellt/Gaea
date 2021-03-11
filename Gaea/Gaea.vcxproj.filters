@@ -67,6 +67,8 @@
     <ClInclude Include="src\gapch.h" />
     <ClInclude Include="src\Gaea\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Gaea\KeyCodes.h" />
+    <ClInclude Include="src\Gaea\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Gaea\Application.cpp">
