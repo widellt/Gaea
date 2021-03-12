@@ -1,5 +1,7 @@
 #include <Gaea.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Gaea::Layer {
 public:
 	ExampleLayer()
@@ -11,6 +13,12 @@ public:
 		//GA_INFO("ExampleLayer::Update");
 		if (Gaea::Input::IsKeyPressed(GA_KEY_TAB))
 			GA_TRACE("Tab key is pressed! (poll)");
+	}
+
+	virtual void OnImGuiRender() override {
+		//ImGui::Render();
+		//ImGui::Text("Hello World!");
+		//ImGui::End();
 	}
 
 	void OnEvent(Gaea::Event& event) override {
@@ -29,7 +37,6 @@ class Sandbox : public Gaea::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Gaea::ImGuiLayer());
 	}
 	
 	~Sandbox() {

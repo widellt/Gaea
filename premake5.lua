@@ -103,6 +103,7 @@ project "Sandbox"
 	includedirs {
 		"Gaea/vendor/spdlog/include",
 		"Gaea/src",
+		"Gaea/vendor",
 		"%{IncludeDir.glm}"
 	}
 

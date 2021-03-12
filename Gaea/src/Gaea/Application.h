@@ -7,6 +7,8 @@
 #include "Gaea/Events/Event.h"
 #include "Gaea/Events/ApplicationEvent.h"
 
+#include "Gaea/ImGui/ImGuiLayer.h"
+
 namespace Gaea {
 	class GAEA_API Application
 	{
@@ -27,6 +29,7 @@ namespace Gaea {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> _Window;
+		ImGuiLayer* _ImGuiLayer;
 		bool _Running = true;
 		LayerStack _LayerStack;
 	private:
