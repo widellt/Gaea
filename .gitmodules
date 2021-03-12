@@ -7,3 +7,6 @@
 [submodule "Gaea/vendor/imgui"]
 	path = Gaea/vendor/imgui
 	url = https://github.com/widellt/imgui
+[submodule "Gaea/vendor/glm"]
+	path = Gaea/vendor/glm
+	url = https://github.com/g-truc/glm

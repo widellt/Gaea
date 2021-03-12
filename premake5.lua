@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Gaea/vendor/GLFW/include"
 IncludeDir["Glad"] = "Gaea/vendor/Glad/include"
 IncludeDir["ImGui"] = "Gaea/vendor/imgui"
+IncludeDir["glm"] = "Gaea/vendor/glm"
 
 group "Dependencies"
 	include "Gaea/vendor/GLFW"
@@ -35,7 +36,9 @@ project "Gaea"
 
 	files {
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs {
@@ -43,7 +46,8 @@ project "Gaea"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
@@ -98,7 +102,8 @@ project "Sandbox"
 
 	includedirs {
 		"Gaea/vendor/spdlog/include",
-		"Gaea/src"
+		"Gaea/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
