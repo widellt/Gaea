@@ -56,6 +56,7 @@ namespace Gaea {
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 	}
+
 	void ImGuiLayer::End() {
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();

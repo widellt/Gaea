@@ -16,9 +16,10 @@ public:
 	}
 
 	virtual void OnImGuiRender() override {
-		//ImGui::Render();
-		//ImGui::Text("Hello World!");
-		//ImGui::End();
+		
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World!");
+		ImGui::End();
 	}
 
 	void OnEvent(Gaea::Event& event) override {
