@@ -28,7 +28,7 @@ namespace Gaea {
 
 		glfwGetCursorPos(window, &xPos, &yPos);
 
-		return std::pair<float, float>(xPos, yPos);
+		return std::pair<float, float>((float)xPos, (float)yPos);
 	}
 	float WindowsInput::GetMouseXImpl(){
 		auto [x, y] = GetMousePosImpl();
