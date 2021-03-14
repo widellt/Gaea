@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Gaea/Window.h"
+#include "Gaea/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -25,6 +26,7 @@ namespace Gaea {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* _Window;
+		GraphicsContext* _Context;
 
 		struct WindowData {
 			std::string	Title;

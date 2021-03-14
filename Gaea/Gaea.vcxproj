@@ -155,7 +155,9 @@
     <ClInclude Include="src\Gaea\LayerStack.h" />
     <ClInclude Include="src\Gaea\Log.h" />
     <ClInclude Include="src\Gaea\MouseButtonCodes.h" />
+    <ClInclude Include="src\Gaea\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Gaea\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\gapch.h" />
@@ -580,6 +582,7 @@
     <ClCompile Include="src\Gaea\Layer.cpp" />
     <ClCompile Include="src\Gaea\LayerStack.cpp" />
     <ClCompile Include="src\Gaea\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\gapch.cpp">

@@ -5,7 +5,7 @@
 #include "Gaea/Events/KeyEvent.h"
 #include "Gaea/Events/MouseEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Gaea {
 	static bool s_GLFWInitialized = false;
@@ -33,6 +33,7 @@ namespace Gaea {
 		_Data.Height = props.Height;
 
 		GA_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		
 
 		if (!s_GLFWInitialized) {
 			// TODO: glfwTerminate on system shutdown
@@ -44,9 +45,9 @@ namespace Gaea {
 
 		_Window = glfwCreateWindow((int)props.Width, (int)props.Height, _Data.Title.c_str(), nullptr, nullptr);
 
-		glfwMakeContextCurrent(_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		GA_CORE_ASSERT(status, "Failed to initialize Glad!");
+		_Context = new OpenGLContext(_Window);
+		_Context->Init();
+
 		glfwSetWindowUserPointer(_Window, &_Data);
 		SetVSync(true);
 
@@ -135,7 +136,7 @@ namespace Gaea {
 
 	void WindowsWindow::OnUpdate() {
 		glfwPollEvents();
-		glfwSwapBuffers(_Window);
+		_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {
