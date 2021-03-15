@@ -10,6 +10,7 @@
 #include "Gaea/ImGui/ImGuiLayer.h"
 
 #include "Gaea/Renderer/Shader.h"
+#include "Gaea/Renderer/Buffer.h"
 
 namespace Gaea {
 	class GAEA_API Application
@@ -36,10 +37,10 @@ namespace Gaea {
 		LayerStack _LayerStack;
 
 		unsigned int _VertexArray;
-		unsigned int _VertexBuffer;
-		unsigned int _IndexBuffer;
 
 		std::unique_ptr<Shader> _Shader;
+		std::unique_ptr<VertexBuffer> _VertexBuffer;
+		std::unique_ptr<IndexBuffer> _IndexBuffer;
 	private:
 		static Application* s_Instance;
 	};

@@ -1341,6 +1341,9 @@
     <ClInclude Include="src\Gaea\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Gaea\Renderer\Shader.h" />
+    <ClInclude Include="src\Gaea\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Gaea\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Gaea\Application.cpp">
@@ -1372,5 +1375,8 @@
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Gaea\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Gaea\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Gaea\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

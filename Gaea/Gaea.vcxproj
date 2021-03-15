@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Gaea\Renderer\Renderer.h" />
     <ClInclude Include="src\Gaea.h" />
     <ClInclude Include="src\Gaea\Application.h" />
     <ClInclude Include="src\Gaea\Core.h" />
@@ -155,9 +156,11 @@
     <ClInclude Include="src\Gaea\LayerStack.h" />
     <ClInclude Include="src\Gaea\Log.h" />
     <ClInclude Include="src\Gaea\MouseButtonCodes.h" />
+    <ClInclude Include="src\Gaea\Renderer\Buffer.h" />
     <ClInclude Include="src\Gaea\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Gaea\Renderer\Shader.h" />
     <ClInclude Include="src\Gaea\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -577,13 +580,16 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Gaea\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Gaea\Application.cpp" />
     <ClCompile Include="src\Gaea\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Gaea\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Gaea\Layer.cpp" />
     <ClCompile Include="src\Gaea\LayerStack.cpp" />
     <ClCompile Include="src\Gaea\Log.cpp" />
+    <ClCompile Include="src\Gaea\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Gaea\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
