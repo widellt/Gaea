@@ -9,6 +9,8 @@
 
 #include "Gaea/ImGui/ImGuiLayer.h"
 
+#include "Gaea/Renderer/Shader.h"
+
 namespace Gaea {
 	class GAEA_API Application
 	{
@@ -37,6 +39,7 @@ namespace Gaea {
 		unsigned int _VertexBuffer;
 		unsigned int _IndexBuffer;
 
+		std::unique_ptr<Shader> _Shader;
 	private:
 		static Application* s_Instance;
 	};
