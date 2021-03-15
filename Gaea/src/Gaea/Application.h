@@ -32,6 +32,11 @@ namespace Gaea {
 		ImGuiLayer* _ImGuiLayer;
 		bool _Running = true;
 		LayerStack _LayerStack;
+
+		unsigned int _VertexArray;
+		unsigned int _VertexBuffer;
+		unsigned int _IndexBuffer;
+
 	private:
 		static Application* s_Instance;
 	};
