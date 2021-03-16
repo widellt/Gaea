@@ -11,6 +11,7 @@
 
 #include "Gaea/Renderer/Shader.h"
 #include "Gaea/Renderer/Buffer.h"
+#include "Gaea/Renderer/VertexArray.h"
 
 namespace Gaea {
 	class GAEA_API Application
@@ -36,11 +37,12 @@ namespace Gaea {
 		bool _Running = true;
 		LayerStack _LayerStack;
 
-		unsigned int _VertexArray;
+		std::shared_ptr<Shader> _Shader;
+		std::shared_ptr<VertexArray> _VertexArray;
 
-		std::unique_ptr<Shader> _Shader;
-		std::unique_ptr<VertexBuffer> _VertexBuffer;
-		std::unique_ptr<IndexBuffer> _IndexBuffer;
+		std::shared_ptr<Shader> _BlueShader;
+		std::shared_ptr<VertexArray> _SquareVA;
+
 	private:
 		static Application* s_Instance;
 	};
