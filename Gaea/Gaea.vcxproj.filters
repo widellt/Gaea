@@ -1346,6 +1346,9 @@
     <ClInclude Include="src\Gaea\Renderer\Renderer.h" />
     <ClInclude Include="src\Gaea\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Gaea\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Gaea\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Gaea\Application.cpp">
@@ -1382,5 +1385,8 @@
     <ClCompile Include="src\Gaea\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Gaea\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Gaea\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Gaea\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

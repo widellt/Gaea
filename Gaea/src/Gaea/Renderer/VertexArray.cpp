@@ -6,10 +6,10 @@
 
 namespace Gaea {
 	VertexArray* VertexArray::Create(){
-		switch (Renderer::GetRenderAPI())
+		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		GA_CORE_ASSERT(false, "RendererAPI::None API not supported!"); return nullptr;
-		case RendererAPI::OpenGL:	return new OpenGLVertexArray();
+		case RendererAPI::API::None:		GA_CORE_ASSERT(false, "RendererAPI::None API not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:	return new OpenGLVertexArray();
 		}
 
 		GA_CORE_ASSERT(false, "Unknown RendererAPI!");

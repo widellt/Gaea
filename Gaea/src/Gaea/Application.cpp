@@ -3,9 +3,8 @@
 
 #include "Gaea/Log.h"
 
-#include <glad/glad.h>
-
 #include "Input.h"
+#include "Gaea/Renderer/Renderer.h"
 
 namespace Gaea {
 
@@ -168,17 +167,18 @@ namespace Gaea {
 
 	void Application::Run() {
 		while (_Running) {
-			glClearColor(0.2f, 0.2f, 0.2f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
 
+			RenderCommand::SetClearColor({ 0.2f, 0.2f, 0.2f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 			_BlueShader->Bind();
-			_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, _SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(_SquareVA);
 
-			// Should bind before instantiating vertex/frag elements for later use with DX, Vulkan, etc.
 			_Shader->Bind();
-			_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, _VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(_VertexArray);
+
+			Renderer::EndScene();
 
 			for (Layer* layer : _LayerStack) {
 				layer->OnUpdate();
