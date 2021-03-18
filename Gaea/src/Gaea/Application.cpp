@@ -12,7 +12,9 @@ namespace Gaea {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application() {
+	Application::Application() 
+		: _Camera(-1.6f, 1.6f, -0.9f, 0.9f)
+	{
 		GA_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -72,6 +74,8 @@ namespace Gaea {
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position; 
 			out vec4 v_Color;
 
@@ -79,7 +83,7 @@ namespace Gaea {
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}
 
 		)";
@@ -88,7 +92,6 @@ namespace Gaea {
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
-			
 
 			in vec3 v_Position;
 			in vec4 v_Color;
@@ -108,12 +111,14 @@ namespace Gaea {
 
 			layout(location = 0) in vec3 a_Position;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position; 
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}
 
 		)";
@@ -122,7 +127,6 @@ namespace Gaea {
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
-			
 
 			in vec3 v_Position;
 
@@ -171,12 +175,13 @@ namespace Gaea {
 			RenderCommand::SetClearColor({ 0.2f, 0.2f, 0.2f, 1 });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
-			_BlueShader->Bind();
-			Renderer::Submit(_SquareVA);
+			_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
+			_Camera.SetRotation(45.0f);
 
-			_Shader->Bind();
-			Renderer::Submit(_VertexArray);
+			Renderer::BeginScene(_Camera);
+
+			Renderer::Submit(_BlueShader, _SquareVA);
+			Renderer::Submit(_Shader, _VertexArray);
 
 			Renderer::EndScene();
 

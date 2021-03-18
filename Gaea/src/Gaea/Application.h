@@ -12,6 +12,7 @@
 #include "Gaea/Renderer/Shader.h"
 #include "Gaea/Renderer/Buffer.h"
 #include "Gaea/Renderer/VertexArray.h"
+#include "Gaea/Renderer/OrthographicCamera.h"
 
 namespace Gaea {
 	class GAEA_API Application
@@ -33,6 +34,7 @@ namespace Gaea {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> _Window;
+		OrthographicCamera _Camera;
 		ImGuiLayer* _ImGuiLayer;
 		bool _Running = true;
 		LayerStack _LayerStack;

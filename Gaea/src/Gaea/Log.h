@@ -24,11 +24,11 @@ namespace Gaea {
 #define GA_CORE_INFO(...)		::Gaea::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define GA_CORE_WARN(...)		::Gaea::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define GA_CORE_ERROR(...)		::Gaea::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define GA_CORE_FATAL(...)		::Gaea::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define GA_CORE_CRITICAL(...)		::Gaea::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
 #define GA_TRACE(...)			::Gaea::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define GA_INFO(...)			::Gaea::Log::GetClientLogger()->info(__VA_ARGS__)
 #define GA_WARN(...)			::Gaea::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define GA_ERROR(...)			::Gaea::Log::GetClientLogger()->error(__VA_ARGS__)
-#define GA_FATAL(...)			::Gaea::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define GA_CRITICAL(...)			::Gaea::Log::GetClientLogger()->critical(__VA_ARGS__)
