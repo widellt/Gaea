@@ -34,16 +34,9 @@ namespace Gaea {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> _Window;
-		OrthographicCamera _Camera;
 		ImGuiLayer* _ImGuiLayer;
 		bool _Running = true;
 		LayerStack _LayerStack;
-
-		std::shared_ptr<Shader> _Shader;
-		std::shared_ptr<VertexArray> _VertexArray;
-
-		std::shared_ptr<Shader> _BlueShader;
-		std::shared_ptr<VertexArray> _SquareVA;
 
 	private:
 		static Application* s_Instance;
