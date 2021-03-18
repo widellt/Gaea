@@ -7,6 +7,9 @@
 #include "Gaea/Layer.h"
 #include "Gaea/Log.h"
 
+// Time
+#include "Gaea/Core/Timestep.h"
+
 	// Inputs 
 #include "Gaea/Input.h"
 #include "Gaea/KeyCodes.h"

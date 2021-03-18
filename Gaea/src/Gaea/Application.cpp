@@ -6,6 +6,9 @@
 #include "Input.h"
 #include "Gaea/Renderer/Renderer.h"
 
+#include <GLFW/glfw3.h>
+
+
 namespace Gaea {
 
 #define BIND_EVENT_FN(x) (std::bind(&x, this, std::placeholders::_1)) 
@@ -55,9 +58,12 @@ namespace Gaea {
 
 	void Application::Run() {
 		while (_Running) {
+			float time = (float)glfwGetTime(); // TODO: Platform::GetTime
+			Timestep timestep = time - _LastFrameTime;
+			_LastFrameTime = time;
 
 			for (Layer* layer : _LayerStack) {
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			_ImGuiLayer->Begin();

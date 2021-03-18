@@ -123,15 +123,16 @@ public:
 		_BlueShader.reset(new Gaea::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
-	void OnUpdate() override {
-		if (Gaea::Input::IsKeyPressed(GA_KEY_LEFT)) { _CameraPosition.x -= _CameraMoveSpeed; }
-		else if (Gaea::Input::IsKeyPressed(GA_KEY_RIGHT)) { _CameraPosition.x += _CameraMoveSpeed; }
+	void OnUpdate(Gaea::Timestep ts) override {
 
-		if (Gaea::Input::IsKeyPressed(GA_KEY_UP)) { _CameraPosition.y += _CameraMoveSpeed; }
-		else if (Gaea::Input::IsKeyPressed(GA_KEY_DOWN)) { _CameraPosition.y -= _CameraMoveSpeed; }
+		if (Gaea::Input::IsKeyPressed(GA_KEY_LEFT)) { _CameraPosition.x += _CameraMoveSpeed * ts; }
+		else if (Gaea::Input::IsKeyPressed(GA_KEY_RIGHT)) { _CameraPosition.x -= _CameraMoveSpeed * ts; }
 
-		if (Gaea::Input::IsKeyPressed(GA_KEY_A)) { _CameraRotation += _CameraRotationSpeed; }
-		if (Gaea::Input::IsKeyPressed(GA_KEY_D)) { _CameraRotation -= _CameraRotationSpeed; }
+		if (Gaea::Input::IsKeyPressed(GA_KEY_UP)) { _CameraPosition.y -= _CameraMoveSpeed * ts; }
+		else if (Gaea::Input::IsKeyPressed(GA_KEY_DOWN)) { _CameraPosition.y += _CameraMoveSpeed * ts; }
+
+		if (Gaea::Input::IsKeyPressed(GA_KEY_A)) { _CameraRotation -= _CameraRotationSpeed * ts; }
+		if (Gaea::Input::IsKeyPressed(GA_KEY_D)) { _CameraRotation += _CameraRotationSpeed * ts; }
 
 		Gaea::RenderCommand::SetClearColor({ 0.2f, 0.2f, 0.2f, 1 });
 		Gaea::RenderCommand::Clear();
@@ -164,9 +165,9 @@ private:
 	Gaea::OrthographicCamera _Camera;
 	glm::vec3 _CameraPosition;
 
-	float _CameraMoveSpeed = 0.01f;
+	float _CameraMoveSpeed = 5.0f;
 	float _CameraRotation = 0.0f;
-	float _CameraRotationSpeed = 2.0f;
+	float _CameraRotationSpeed = 180.0f;
 };
 
 class Sandbox : public Gaea::Application {

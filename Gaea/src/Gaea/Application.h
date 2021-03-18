@@ -9,6 +9,8 @@
 
 #include "Gaea/ImGui/ImGuiLayer.h"
 
+#include "Gaea/Core/Timestep.h"
+
 #include "Gaea/Renderer/Shader.h"
 #include "Gaea/Renderer/Buffer.h"
 #include "Gaea/Renderer/VertexArray.h"
@@ -32,12 +34,12 @@ namespace Gaea {
 		inline Window& GetWindow() { return *_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> _Window;
 		ImGuiLayer* _ImGuiLayer;
 		bool _Running = true;
 		LayerStack _LayerStack;
-
+		float _LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};

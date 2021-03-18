@@ -3,6 +3,8 @@
 #include "Gaea/Core.h"
 #include "Gaea/Events/Event.h"
 
+#include "Gaea/Core/Timestep.h"
+
 namespace Gaea {
 	class GAEA_API Layer
 	{
@@ -12,7 +14,7 @@ namespace Gaea {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnEvent(Event& event) {}
 		virtual void OnImGuiRender() {}
 		inline const std::string& GetName() const { return _DebugName; }
