@@ -1,8 +1,12 @@
 #include <Gaea.h>
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 class ExampleLayer : public Gaea::Layer {
 public:
@@ -90,7 +94,7 @@ public:
 
 		)";
 
-		_Shader.reset(new Gaea::Shader(vertexSrc, fragmentSrc));
+		_Shader.reset(Gaea::Shader::Create(vertexSrc, fragmentSrc));
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -117,16 +121,16 @@ public:
 
 			in vec3 v_Position;
 
-			uniform vec4 u_Color;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = u_Color;
+				color = vec4(u_Color, 1.0);
 			}
 
 		)";
 
-		_FlatColorShader.reset(new Gaea::Shader(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		_FlatColorShader.reset(Gaea::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 	}
 
 	void OnUpdate(Gaea::Timestep ts) override {
@@ -150,26 +154,13 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
-		glm::vec4 blueColor(0.3f, 0.2f, 0.8f, 1.0f);
-
-		// Example code for material API
-		//Gaea::MaterialRef material = new Gaea::Material(_FlatColorShader);
-		//Gaea::MaterialInstanceRef matInst = new Gaea::MaterialInstance(_FlatColorShader);
-
-		//matInst->Set("u_Color", redColor);
-		//matInst->SetTexture("u_AlbedoMap", texture);
-		//squareMesh->SetMaterial(matInst);
+		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_FlatColorShader)->Bind();
+		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_FlatColorShader)->UploadUniformFloat3("u_Color", _SquareColor);
 
 		for (int y = 0; y < 20; y++) {
 			for (int x = 0; x < 20; x++) {
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				
-				if (y % 2)
-					_FlatColorShader->UploadUniformFloat4("u_Color", redColor);
-				else
-					_FlatColorShader->UploadUniformFloat4("u_Color", blueColor);
 				
 				Gaea::Renderer::Submit(_FlatColorShader, _SquareVA, transform);
 			}
@@ -182,7 +173,9 @@ public:
 	}
 
 	virtual void OnImGuiRender() override {
-		
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Gaea::Event& event) override {
@@ -195,12 +188,17 @@ private:
 	std::shared_ptr<Gaea::Shader> _FlatColorShader;
 	std::shared_ptr<Gaea::VertexArray> _SquareVA;
 
+	// Camera
 	Gaea::OrthographicCamera _Camera;
-	glm::vec3 _CameraPosition;
 
+	glm::vec3 _CameraPosition;
 	float _CameraMoveSpeed = 5.0f;
+
 	float _CameraRotation = 0.0f;
 	float _CameraRotationSpeed = 180.0f;
+
+	// Shader
+	glm::vec3 _SquareColor = { 0.2f, 0.3f, 0.8f };
 };
 
 class Sandbox : public Gaea::Application {
