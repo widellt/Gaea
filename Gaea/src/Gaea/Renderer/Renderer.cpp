@@ -17,6 +17,8 @@ namespace Gaea{
 		shader->UploadUniformMat4("u_ViewProjection", _SceneData->ViewProjectionMatrix);
 		shader->UploadUniformMat4("u_Transform", transform);
 
+		matInst.Bind();
+
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}

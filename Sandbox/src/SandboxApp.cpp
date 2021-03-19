@@ -92,7 +92,7 @@ public:
 
 		_Shader.reset(new Gaea::Shader(vertexSrc, fragmentSrc));
 
-		std::string blueShaderVertexSrc = R"(
+		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
 
 			layout(location = 0) in vec3 a_Position;
@@ -110,21 +110,23 @@ public:
 
 		)";
 
-		std::string blueShaderFragmentSrc = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
 
+			uniform vec4 u_Color;
+
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = u_Color;
 			}
 
 		)";
 
-		_BlueShader.reset(new Gaea::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+		_FlatColorShader.reset(new Gaea::Shader(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 	}
 
 	void OnUpdate(Gaea::Timestep ts) override {
@@ -148,11 +150,28 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
+		glm::vec4 blueColor(0.3f, 0.2f, 0.8f, 1.0f);
+
+		// Example code for material API
+		//Gaea::MaterialRef material = new Gaea::Material(_FlatColorShader);
+		//Gaea::MaterialInstanceRef matInst = new Gaea::MaterialInstance(_FlatColorShader);
+
+		//matInst->Set("u_Color", redColor);
+		//matInst->SetTexture("u_AlbedoMap", texture);
+		//squareMesh->SetMaterial(matInst);
+
 		for (int y = 0; y < 20; y++) {
 			for (int x = 0; x < 20; x++) {
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Gaea::Renderer::Submit(_BlueShader, _SquareVA, transform);
+				
+				if (y % 2)
+					_FlatColorShader->UploadUniformFloat4("u_Color", redColor);
+				else
+					_FlatColorShader->UploadUniformFloat4("u_Color", blueColor);
+				
+				Gaea::Renderer::Submit(_FlatColorShader, _SquareVA, transform);
 			}
 		}
 		
@@ -173,7 +192,7 @@ private:
 	std::shared_ptr<Gaea::Shader> _Shader;
 	std::shared_ptr<Gaea::VertexArray> _VertexArray;
 
-	std::shared_ptr<Gaea::Shader> _BlueShader;
+	std::shared_ptr<Gaea::Shader> _FlatColorShader;
 	std::shared_ptr<Gaea::VertexArray> _SquareVA;
 
 	Gaea::OrthographicCamera _Camera;
