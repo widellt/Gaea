@@ -11,6 +11,8 @@ namespace Gaea {
 	class Renderer {
 	public:
 
+		static void Init();
+
 		static void BeginScene(OrthographicCamera& camera); // TODO: Take in all scene params
 		static void EndScene();
 

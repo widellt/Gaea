@@ -171,6 +171,7 @@ public:
 		_TextureShader.reset(Gaea::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
 		_Texture = Gaea::Texture2D::Create("assets/textures/checkerboard.png");
+		_TransTexture = Gaea::Texture2D::Create("assets/textures/alpha.png");
 
 		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -211,6 +212,9 @@ public:
 
 		_Texture->Bind();
 		Gaea::Renderer::Submit(_TextureShader, _SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		_TransTexture->Bind();
+		Gaea::Renderer::Submit(_TextureShader, _SquareVA, glm::translate(glm::mat4(1.0f), glm::vec3(0.25f, -0.25f, 0.0f)) * 
+			glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Triangle
 		// Gaea::Renderer::Submit(_Shader, _VertexArray);
@@ -234,7 +238,7 @@ private:
 	Gaea::Ref<Gaea::Shader> _FlatColorShader, _TextureShader;
 	Gaea::Ref<Gaea::VertexArray> _SquareVA;
 
-	Gaea::Ref<Gaea::Texture2D> _Texture;
+	Gaea::Ref<Gaea::Texture2D> _Texture, _TransTexture;
 
 	// Camera
 	Gaea::OrthographicCamera _Camera;

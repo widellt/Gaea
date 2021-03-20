@@ -23,6 +23,8 @@ namespace Gaea {
 		_Window = std::unique_ptr<Window>(Window::Create());
 		_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 
+		Renderer::Init();
+
 		_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(_ImGuiLayer);
 
