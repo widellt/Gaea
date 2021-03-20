@@ -39,7 +39,7 @@ namespace Gaea {
 		glBindVertexArray(0);
 	}
 
-	void Gaea::OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer){
+	void Gaea::OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer){
 		GA_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex buffer has no layout!");
 
 		glBindVertexArray(_RendererID);
@@ -57,7 +57,7 @@ namespace Gaea {
 
 	}
 
-	void Gaea::OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer){
+	void Gaea::OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer){
 		glBindVertexArray(_RendererID);
 		indexBuffer->Bind();
 

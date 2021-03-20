@@ -21,7 +21,7 @@ public:
 			0.0f, 0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 0.8f
 		};
 
-		std::shared_ptr<Gaea::VertexBuffer> vertexBuffer;
+		Gaea::Ref<Gaea::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Gaea::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Gaea::BufferLayout layout = {
 			{ Gaea::ShaderDataType::Float3, "a_Position" },
@@ -31,7 +31,7 @@ public:
 		_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Gaea::IndexBuffer> indexBuffer;
+		Gaea::Ref<Gaea::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Gaea::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -44,7 +44,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Gaea::VertexBuffer> squareVB;
+		Gaea::Ref<Gaea::VertexBuffer> squareVB;
 		squareVB.reset(Gaea::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		Gaea::BufferLayout squareLayout = {
 			{ Gaea::ShaderDataType::Float3, "a_Position" }
@@ -53,7 +53,7 @@ public:
 		_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Gaea::IndexBuffer> squareIB;
+		Gaea::Ref<Gaea::IndexBuffer> squareIB;
 		squareIB.reset(Gaea::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		_SquareVA->SetIndexBuffer(squareIB);
 
@@ -182,11 +182,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Gaea::Shader> _Shader;
-	std::shared_ptr<Gaea::VertexArray> _VertexArray;
+	Gaea::Ref<Gaea::Shader> _Shader;
+	Gaea::Ref<Gaea::VertexArray> _VertexArray;
 
-	std::shared_ptr<Gaea::Shader> _FlatColorShader;
-	std::shared_ptr<Gaea::VertexArray> _SquareVA;
+	Gaea::Ref<Gaea::Shader> _FlatColorShader;
+	Gaea::Ref<Gaea::VertexArray> _SquareVA;
 
 	// Camera
 	Gaea::OrthographicCamera _Camera;
