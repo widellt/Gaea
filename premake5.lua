@@ -15,6 +15,7 @@ IncludeDir["GLFW"] = "Gaea/vendor/GLFW/include"
 IncludeDir["Glad"] = "Gaea/vendor/Glad/include"
 IncludeDir["ImGui"] = "Gaea/vendor/imgui"
 IncludeDir["glm"] = "Gaea/vendor/glm"
+IncludeDir["stb_image"] = "Gaea/vendor/stb_image"
 
 group "Dependencies"
 	include "Gaea/vendor/GLFW"
@@ -38,6 +39,8 @@ project "Gaea"
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -52,7 +55,8 @@ project "Gaea"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links {

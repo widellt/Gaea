@@ -37,17 +37,18 @@ public:
 
 		_SquareVA.reset(Gaea::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		Gaea::Ref<Gaea::VertexBuffer> squareVB;
 		squareVB.reset(Gaea::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		Gaea::BufferLayout squareLayout = {
-			{ Gaea::ShaderDataType::Float3, "a_Position" }
+			{ Gaea::ShaderDataType::Float3, "a_Position" },
+			{ Gaea::ShaderDataType::Float2, "a_TexCoord" }
 		};
 		squareVB->SetLayout(squareLayout);
 		_SquareVA->AddVertexBuffer(squareVB);
@@ -131,6 +132,48 @@ public:
 		)";
 
 		_FlatColorShader.reset(Gaea::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+
+		)";
+
+		_TextureShader.reset(Gaea::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		_Texture = Gaea::Texture2D::Create("assets/textures/checkerboard.png");
+
+		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Gaea::Timestep ts) override {
@@ -165,9 +208,12 @@ public:
 				Gaea::Renderer::Submit(_FlatColorShader, _SquareVA, transform);
 			}
 		}
-		
-		
-		Gaea::Renderer::Submit(_Shader, _VertexArray);
+
+		_Texture->Bind();
+		Gaea::Renderer::Submit(_TextureShader, _SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		// Triangle
+		// Gaea::Renderer::Submit(_Shader, _VertexArray);
 		
 		Gaea::Renderer::EndScene();
 	}
@@ -185,8 +231,10 @@ private:
 	Gaea::Ref<Gaea::Shader> _Shader;
 	Gaea::Ref<Gaea::VertexArray> _VertexArray;
 
-	Gaea::Ref<Gaea::Shader> _FlatColorShader;
+	Gaea::Ref<Gaea::Shader> _FlatColorShader, _TextureShader;
 	Gaea::Ref<Gaea::VertexArray> _SquareVA;
+
+	Gaea::Ref<Gaea::Texture2D> _Texture;
 
 	// Camera
 	Gaea::OrthographicCamera _Camera;

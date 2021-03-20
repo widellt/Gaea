@@ -24,6 +24,7 @@
 
 	// Resources
 #include "Gaea/Renderer/Shader.h"
+#include "Gaea/Renderer/Texture.h"
 #include "Gaea/Renderer/Buffer.h"
 #include "Gaea/Renderer/VertexArray.h"
 
