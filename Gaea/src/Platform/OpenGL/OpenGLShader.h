@@ -3,9 +3,13 @@
 #include "Gaea/Renderer/Shader.h"
 #include <glm/glm.hpp>
 
+// TODO: REMOVE!
+typedef unsigned int GLenum;
+
 namespace Gaea {
 	class OpenGLShader : public Shader {
 	public:
+		OpenGLShader(const std::string& filePath);
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
 		virtual ~OpenGLShader();
 
@@ -21,6 +25,10 @@ namespace Gaea {
 
 		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
+	private:
+		std::string ReadFile(const std::string& filePath);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
 	private:
 		uint32_t _RendererID;
 	};
