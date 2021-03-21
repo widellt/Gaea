@@ -95,7 +95,7 @@ public:
 
 		)";
 
-		_Shader.reset(Gaea::Shader::Create(vertexSrc, fragmentSrc));
+		_Shader = Gaea::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -131,15 +131,14 @@ public:
 
 		)";
 
-		_FlatColorShader.reset(Gaea::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		_FlatColorShader = Gaea::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		_TextureShader.reset(Gaea::Shader::Create("assets/shaders/Texture.glsl"));
-
+		auto textureShader = _ShaderLibrary.Load("assets/shaders/Texture.glsl");
 		_Texture = Gaea::Texture2D::Create("assets/textures/checkerboard.png");
 		_TransTexture = Gaea::Texture2D::Create("assets/textures/alpha.png");
 
-		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Gaea::OpenGLShader>(_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Gaea::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Gaea::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Gaea::Timestep ts) override {
@@ -175,10 +174,12 @@ public:
 			}
 		}
 
+		auto textureShader = _ShaderLibrary.Get("Texture");
+
 		_Texture->Bind();
-		Gaea::Renderer::Submit(_TextureShader, _SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Gaea::Renderer::Submit(textureShader, _SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		_TransTexture->Bind();
-		Gaea::Renderer::Submit(_TextureShader, _SquareVA, glm::translate(glm::mat4(1.0f), glm::vec3(0.25f, -0.25f, 0.0f)) * 
+		Gaea::Renderer::Submit(textureShader, _SquareVA, glm::translate(glm::mat4(1.0f), glm::vec3(0.25f, -0.25f, 0.0f)) *
 			glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Triangle
@@ -197,10 +198,11 @@ public:
 	}
 
 private:
+	Gaea::ShaderLibrary _ShaderLibrary;
 	Gaea::Ref<Gaea::Shader> _Shader;
 	Gaea::Ref<Gaea::VertexArray> _VertexArray;
 
-	Gaea::Ref<Gaea::Shader> _FlatColorShader, _TextureShader;
+	Gaea::Ref<Gaea::Shader> _FlatColorShader;
 	Gaea::Ref<Gaea::VertexArray> _SquareVA;
 
 	Gaea::Ref<Gaea::Texture2D> _Texture, _TransTexture;
