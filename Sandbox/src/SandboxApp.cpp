@@ -11,7 +11,7 @@
 class ExampleLayer : public Gaea::Layer {
 public:
 	ExampleLayer()
-		: Layer("Example"),  _Camera(-1.6f, 1.6f, -0.9f, 0.9f), _CameraPosition(0.0f)
+		: Layer("Example"),  _CameraController(1280.0f/720.0f)
 	{
 		_VertexArray.reset(Gaea::VertexArray::Create());
 
@@ -142,23 +142,14 @@ public:
 	}
 
 	void OnUpdate(Gaea::Timestep ts) override {
+		//Update
+		_CameraController.OnUpdate(ts);
 
-		if (Gaea::Input::IsKeyPressed(GA_KEY_LEFT)) { _CameraPosition.x += _CameraMoveSpeed * ts; }
-		else if (Gaea::Input::IsKeyPressed(GA_KEY_RIGHT)) { _CameraPosition.x -= _CameraMoveSpeed * ts; }
-
-		if (Gaea::Input::IsKeyPressed(GA_KEY_UP)) { _CameraPosition.y -= _CameraMoveSpeed * ts; }
-		else if (Gaea::Input::IsKeyPressed(GA_KEY_DOWN)) { _CameraPosition.y += _CameraMoveSpeed * ts; }
-
-		if (Gaea::Input::IsKeyPressed(GA_KEY_A)) { _CameraRotation -= _CameraRotationSpeed * ts; }
-		if (Gaea::Input::IsKeyPressed(GA_KEY_D)) { _CameraRotation += _CameraRotationSpeed * ts; }
-
+		// Render
 		Gaea::RenderCommand::SetClearColor({ 0.2f, 0.2f, 0.2f, 1 });
 		Gaea::RenderCommand::Clear();
 
-		_Camera.SetPosition(_CameraPosition);
-		_Camera.SetRotation(_CameraRotation);
-
-		Gaea::Renderer::BeginScene(_Camera);
+		Gaea::Renderer::BeginScene(_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -194,7 +185,8 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(Gaea::Event& event) override {
+	void OnEvent(Gaea::Event& e) override {
+		_CameraController.OnEvent(e);
 	}
 
 private:
@@ -208,13 +200,7 @@ private:
 	Gaea::Ref<Gaea::Texture2D> _Texture, _TransTexture;
 
 	// Camera
-	Gaea::OrthographicCamera _Camera;
-
-	glm::vec3 _CameraPosition;
-	float _CameraMoveSpeed = 5.0f;
-
-	float _CameraRotation = 0.0f;
-	float _CameraRotationSpeed = 180.0f;
+	Gaea::OrthographicCameraController _CameraController;
 
 	// Shader
 	glm::vec3 _SquareColor = { 0.2f, 0.3f, 0.8f };

@@ -7,8 +7,11 @@ namespace Gaea {
 	}
 
 	LayerStack::~LayerStack() {
-		for (Layer* layer : _Layers)
+		for (Layer* layer : _Layers) {
+			layer->OnDetach();
 			delete layer;
+		}
+			
 	}
 
 	void LayerStack::PushLayer(Layer* layer) {

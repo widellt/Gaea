@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Gaea\OrthographicCameraController.h" />
     <ClInclude Include="src\Gaea.h" />
     <ClInclude Include="src\Gaea\Application.h" />
     <ClInclude Include="src\Gaea\Core.h" />
@@ -591,6 +592,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Gaea\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Gaea\Application.cpp" />
     <ClCompile Include="src\Gaea\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Gaea\ImGui\ImGuiLayer.cpp" />

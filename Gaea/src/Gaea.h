@@ -14,6 +14,7 @@
 #include "Gaea/Input.h"
 #include "Gaea/KeyCodes.h"
 #include "Gaea/MouseButtonCodes.h"
+#include "Gaea/OrthographicCameraController.h"
 
 	// ImGui
 #include "Gaea/ImGui/ImGuiLayer.h"
