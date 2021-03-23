@@ -8,7 +8,7 @@
 #include "GLFW/glfw3.h" // Also temporary
 #include <glad/glad.h> // Also temporary
 
-#include "Gaea/Application.h"
+#include "Gaea/Core/Application.h"
 
 namespace Gaea {
 	ImGuiLayer::ImGuiLayer()

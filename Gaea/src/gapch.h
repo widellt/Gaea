@@ -14,7 +14,7 @@
 #include <vector>
 #include <sstream>
 
-#include "Gaea/Log.h"
+#include "Gaea/Core/Log.h"
 
 #ifdef GA_PLATFORM_WINDOWS
 	#include <Windows.h>

@@ -2,7 +2,7 @@
 #include "WindowsInput.h"
 
 #include <GLFW/glfw3.h>
-#include "Gaea/Application.h"
+#include "Gaea/Core/Application.h"
 
 namespace Gaea {
 	Input* Input::s_Instance = new WindowsInput();

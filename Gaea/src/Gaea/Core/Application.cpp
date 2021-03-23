@@ -1,7 +1,7 @@
 #include "gapch.h"
 #include "Application.h"
 
-#include "Gaea/Log.h"
+#include "Gaea/Core/Log.h"
 
 #include "Input.h"
 #include "Gaea/Renderer/Renderer.h"

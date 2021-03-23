@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Gaea/Core.h"
+#include "Gaea/Core/Core.h"
 
 namespace Gaea {
 

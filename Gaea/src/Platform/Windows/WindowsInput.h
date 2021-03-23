@@ -1,5 +1,5 @@
 #pragma once
-#include "Gaea/Input.h"
+#include "Gaea/Core/Input.h"
 
 namespace Gaea {
 	class WindowsInput : public Input {

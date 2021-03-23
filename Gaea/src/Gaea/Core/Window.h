@@ -2,7 +2,7 @@
 
 #include "gapch.h"
 
-#include "Gaea/Core.h"
+#include "Gaea/Core/Core.h"
 #include "Gaea/Events/Event.h"
 
 namespace Gaea {

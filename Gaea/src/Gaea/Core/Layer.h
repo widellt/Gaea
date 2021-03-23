@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Gaea/Core.h"
+#include "Gaea/Core/Core.h"
 #include "Gaea/Events/Event.h"
 
 #include "Gaea/Core/Timestep.h"

@@ -1,6 +1,6 @@
 #pragma once
 #include "gapch.h"
-#include "Gaea/Core.h"
+#include "Gaea/Core/Core.h"
 
 namespace Gaea {
 	// Events in Gaea are currently blocking, meaning when an event 

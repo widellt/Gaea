@@ -1,5 +1,5 @@
 #pragma once
-#include "Gaea/Core.h"
+#include "Gaea/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>

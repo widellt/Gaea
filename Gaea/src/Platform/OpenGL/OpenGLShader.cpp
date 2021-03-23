@@ -119,7 +119,7 @@ namespace Gaea {
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources){
 
 		GLuint program = glCreateProgram();
-		GA_CORE_ASSERT(shaderSources <= 2, "Only two shaders supported currently");
+		GA_CORE_ASSERT(shaderSources.size() <= 2, "Only two shaders supported currently");
 		std::array<GLenum, 2> glShaderIDs;
 		int glShaderIDIndex = 0;
 
@@ -132,7 +132,7 @@ namespace Gaea {
 
 			// Send the vertex shader source code to GL
 			// Note that std::string's .c_str is NULL character terminated.
-			const GLchar* sourceCStr= source.c_str();
+			const GLchar* sourceCStr = source.c_str();
 			glShaderSource(shader, 1, &sourceCStr, 0);
 
 			// Compile the shader

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Gaea/Layer.h"
+#include "Gaea/Core/Layer.h"
 
 #include "Gaea/Events/KeyEvent.h"
 #include "Gaea/Events/MouseEvent.h"

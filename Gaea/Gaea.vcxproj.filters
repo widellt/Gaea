@@ -57,17 +57,8 @@
     <ClInclude Include="src\Gaea.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Gaea\Application.h">
-      <Filter>src\Gaea</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\Core.h">
-      <Filter>src\Gaea</Filter>
-    </ClInclude>
     <ClInclude Include="src\Gaea\Core\Timestep.h">
       <Filter>src\Gaea\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\EntryPoint.h">
-      <Filter>src\Gaea</Filter>
     </ClInclude>
     <ClInclude Include="src\Gaea\Events\ApplicationEvent.h">
       <Filter>src\Gaea\Events</Filter>
@@ -83,24 +74,6 @@
     </ClInclude>
     <ClInclude Include="src\Gaea\ImGui\ImGuiLayer.h">
       <Filter>src\Gaea\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\Input.h">
-      <Filter>src\Gaea</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\KeyCodes.h">
-      <Filter>src\Gaea</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\Layer.h">
-      <Filter>src\Gaea</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\LayerStack.h">
-      <Filter>src\Gaea</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\Log.h">
-      <Filter>src\Gaea</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\MouseButtonCodes.h">
-      <Filter>src\Gaea</Filter>
     </ClInclude>
     <ClInclude Include="src\Gaea\Renderer\Buffer.h">
       <Filter>src\Gaea\Renderer</Filter>
@@ -128,9 +101,6 @@
     </ClInclude>
     <ClInclude Include="src\Gaea\Renderer\VertexArray.h">
       <Filter>src\Gaea\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gaea\Window.h">
-      <Filter>src\Gaea</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1401,26 +1371,46 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Gaea\OrthographicCameraController.h" />
+    <ClInclude Include="src\Gaea\Core\Window.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\MouseButtonCodes.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\Log.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\LayerStack.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\Layer.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\KeyCodes.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\Input.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\EntryPoint.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\Core.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Core\Application.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaea\Renderer\OrthographicCameraController.h">
+      <Filter>src\Gaea</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Gaea\Application.cpp">
-      <Filter>src\Gaea</Filter>
-    </ClCompile>
     <ClCompile Include="src\Gaea\ImGui\ImGuiBuild.cpp">
       <Filter>src\Gaea\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Gaea\ImGui\ImGuiLayer.cpp">
       <Filter>src\Gaea\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Gaea\Layer.cpp">
-      <Filter>src\Gaea</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Gaea\LayerStack.cpp">
-      <Filter>src\Gaea</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Gaea\Log.cpp">
-      <Filter>src\Gaea</Filter>
     </ClCompile>
     <ClCompile Include="src\Gaea\Renderer\Buffer.cpp">
       <Filter>src\Gaea\Renderer</Filter>
@@ -1476,6 +1466,20 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Gaea\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Gaea\Core\Log.cpp">
+      <Filter>src\Gaea</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gaea\Core\LayerStack.cpp">
+      <Filter>src\Gaea</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gaea\Core\Layer.cpp">
+      <Filter>src\Gaea</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gaea\Core\Application.cpp">
+      <Filter>src\Gaea</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gaea\Renderer\OrthographicCameraController.cpp">
+      <Filter>src\Gaea</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

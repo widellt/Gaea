@@ -3,18 +3,18 @@
 // For use by Gaea applications  //////
 
 	// Application layer 
-#include "Gaea/Application.h"
-#include "Gaea/Layer.h"
-#include "Gaea/Log.h"
+#include "Gaea/Core/Application.h"
+#include "Gaea/Core/Layer.h"
+#include "Gaea/Core/Log.h"
 
 // Time
 #include "Gaea/Core/Timestep.h"
 
 	// Inputs 
-#include "Gaea/Input.h"
-#include "Gaea/KeyCodes.h"
-#include "Gaea/MouseButtonCodes.h"
-#include "Gaea/OrthographicCameraController.h"
+#include "Gaea/Core/Input.h"
+#include "Gaea/Core/KeyCodes.h"
+#include "Gaea/Core/MouseButtonCodes.h"
+#include "Gaea/Renderer/OrthographicCameraController.h"
 
 	// ImGui
 #include "Gaea/ImGui/ImGuiLayer.h"
@@ -33,5 +33,5 @@
 #include "Gaea/Renderer/OrthographicCamera.h"
 
 // ---------Entry Point---------
-#include "Gaea/EntryPoint.h"
+#include "Gaea/Core/EntryPoint.h"
 //------------------------------

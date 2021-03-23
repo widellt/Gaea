@@ -1,8 +1,8 @@
 #include "gapch.h"
 #include "OrthographicCameraController.h"
 
-#include "Gaea/Input.h"
-#include "Gaea/KeyCodes.h"
+#include "Gaea/Core/Input.h"
+#include "Gaea/Core/KeyCodes.h"
 
 namespace Gaea {
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation) 

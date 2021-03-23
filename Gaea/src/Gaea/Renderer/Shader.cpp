@@ -52,7 +52,7 @@ namespace Gaea {
 		GA_CORE_ASSERT(Exists(name), "Shader not found!");
 		return _Shaders[name];
 	}
-	bool ShaderLibrary::Exists(std::string& name) const{
+	bool ShaderLibrary::Exists(const std::string& name) const {
 		return _Shaders.find(name) != _Shaders.end();
 	}
 }
