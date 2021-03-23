@@ -48,6 +48,7 @@ namespace Gaea {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(Application::OnWindowResize));
 
 		for (auto it = _LayerStack.end(); it != _LayerStack.begin(); ) {
 			(*--it)->OnEvent(e);
@@ -64,9 +65,13 @@ namespace Gaea {
 			Timestep timestep = time - _LastFrameTime;
 			_LastFrameTime = time;
 
-			for (Layer* layer : _LayerStack) {
-				layer->OnUpdate(timestep);
+			// Cease updating layer stack if window minimized
+			if (!_Minimized) {
+				for (Layer* layer : _LayerStack) {
+					layer->OnUpdate(timestep);
+				}
 			}
+			
 
 			_ImGuiLayer->Begin();
 			for (Layer* layer : _LayerStack) {
@@ -80,6 +85,17 @@ namespace Gaea {
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		_Running = false;
 		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e) {
+		if (e.GetWidth() == 0 || e.GetHeight() == 0) { 
+			_Minimized = true; 
+			return false; 
+		}
+
+		_Minimized = false;
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		return false;
 	}
 	
 }

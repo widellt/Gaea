@@ -5,5 +5,4 @@
 
 namespace Gaea {
 	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
-
 }

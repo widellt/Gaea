@@ -11,6 +11,10 @@ namespace Gaea{
 		RenderCommand::Init();
 	}
 
+	void Renderer::OnWindowResize(uint32_t width, uint32_t height){
+		RenderCommand::SetViewport(0, 0, width, height); // May change this is multiple viewports
+	}
+
 	void Renderer::BeginScene(OrthographicCamera& camera){
 		_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}

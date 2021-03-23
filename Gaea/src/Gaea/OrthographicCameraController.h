@@ -15,6 +15,9 @@ namespace Gaea {
 
 		OrthographicCamera& GetCamera() {return _Camera;}
 		const OrthographicCamera& GetCamera() const { return _Camera; }
+
+		float GetZoomLevel() const { return _ZoomLevel; }
+		void SetZoomLevel(float zoomLevel) { _ZoomLevel = zoomLevel; }
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool WindowResize(WindowResizeEvent& e);

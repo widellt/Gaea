@@ -34,10 +34,12 @@ namespace Gaea {
 		inline Window& GetWindow() { return *_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 	private:
 		std::unique_ptr<Window> _Window;
 		ImGuiLayer* _ImGuiLayer;
 		bool _Running = true;
+		bool _Minimized = false;
 		LayerStack _LayerStack;
 		float _LastFrameTime = 0.0f;
 	private:
