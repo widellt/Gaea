@@ -9,7 +9,7 @@ namespace Gaea {
 	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size){
 		switch (Renderer::GetAPI()) 
 		{
-			case RendererAPI::API::None:		GA_CORE_ASSERT(false, "RendererAPI::None API not supported!"); return nullptr;
+			case RendererAPI::API::None:	GA_CORE_ASSERT(false, "RendererAPI::None API not supported!"); return nullptr;
 			case RendererAPI::API::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
 		}
 
@@ -20,7 +20,7 @@ namespace Gaea {
 	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size){
 		switch (Renderer::GetAPI()) 
 		{
-			case RendererAPI::API::None:		GA_CORE_ASSERT(false, "RendererAPI::None API not supported!"); return nullptr;
+			case RendererAPI::API::None:	GA_CORE_ASSERT(false, "RendererAPI::None API not supported!"); return nullptr;
 			case RendererAPI::API::OpenGL:	return new OpenGLIndexBuffer(indices, size);
 		}
 

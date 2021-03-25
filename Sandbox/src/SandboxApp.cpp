@@ -1,4 +1,5 @@
 #include <Gaea.h>
+#include <Gaea/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -7,13 +8,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+
 
 class ExampleLayer : public Gaea::Layer {
 public:
 	ExampleLayer()
 		: Layer("Example"),  _CameraController(1280.0f/720.0f)
 	{
-		_VertexArray.reset(Gaea::VertexArray::Create());
+		_VertexArray = Gaea::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -35,7 +38,7 @@ public:
 		indexBuffer.reset(Gaea::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		_VertexArray->SetIndexBuffer(indexBuffer);
 
-		_SquareVA.reset(Gaea::VertexArray::Create());
+		_SquareVA = Gaea::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -173,8 +176,8 @@ public:
 		Gaea::Renderer::Submit(textureShader, _SquareVA, glm::translate(glm::mat4(1.0f), glm::vec3(0.25f, -0.25f, 0.0f)) *
 			glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
-		// Triangle
-		// Gaea::Renderer::Submit(_Shader, _VertexArray);
+		//Triangle
+		Gaea::Renderer::Submit(_Shader, _VertexArray);
 		
 		Gaea::Renderer::EndScene();
 	}
@@ -210,7 +213,8 @@ class Sandbox : public Gaea::Application {
 
 public:
 	Sandbox() {
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 	
 	~Sandbox() {

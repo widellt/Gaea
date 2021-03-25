@@ -2,19 +2,66 @@
 
 #include <memory>
 
-#ifdef GA_PLATFORM_WINDOWS
-#ifdef GA_DYNAMIC_LINK
-	#ifdef GA_BUILD_DLL
-		#define GAEA_API __declspec(dllexport)
+
+// Platform detection using predefined macros
+#ifdef _WIN32
+	/*Windows x86/x64 */
+	#ifdef _WIN64
+		#define	GA_PLATFORM_WINDOWS
+
+	#else 
+		#error "x86 Builds are not supported!"
+	#endif
+	
+#elif defined(__APPLE__) || defined(__MACH__)
+	#include <TargetConditionals.h>
+
+	/* 
+	TARGET_OS_MAC exists on all
+	platforms so we need to check all of them
+	in order to ensure that we're running on Mac
+	and not on another Apple platform*
+	*/
+	#if TARGET_IPHONE_SIMULATOR == 1
+		#error "IOS Simulator is not supported!"
+	#elif TARGET_OS_IPHONE == 1
+		#define GA_PLATFORM_IOS
+		#error "IOS Simulator is not supported!"
+	#elif TARGET_OS_MAC == 1
+		#define GA_PLATFORM_MACOS
+		#error "IOS Simulator is not supported!"
 	#else
-		#define GAEA_API __declspec(dllimport)
+		#error "Uknown Apple platform!"
+	#endif
+	/*
+	We also have to check Android before linux, since 
+	Android is based on the linux kernel __linux__ will 
+	already be defined
+	*/
+#elif defined(__ANDROID__)
+	#define GA_PLATFORM_ANDROID
+	#error "Android not supported!"
+#elif defined(__ANDROID__)
+	#define GA_PLATFORM_LINUX
+	#error "Linux not supported!"
+#else
+	#error "Uknown platform!"
+#endif
+
+#ifdef GA_PLATFORM_WINDOWS
+	#if DYNAMIC_LINK
+		#ifdef GA_BUILD_DLL
+			#define GAEA_API __declspec(export)
+		#else
+			#define GAEA_API __declspec(import)
+		#endif
+	#else
+		#define GAEA_API 
 	#endif
 #else
-	#define GAEA_API
-#endif
-#else
-	#error Gaea only supports Windows!
-#endif
+	#error "Gaea only supports Windows!"
+#endif // GA_BUILD_DLL, end of support
+
 
 #ifdef GA_DEBUG
 	#define GA_ENABLE_ASSERTS

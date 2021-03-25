@@ -31,7 +31,3 @@
 
 	// Other renderer primitives
 #include "Gaea/Renderer/OrthographicCamera.h"
-
-// ---------Entry Point---------
-#include "Gaea/Core/EntryPoint.h"
-//------------------------------
