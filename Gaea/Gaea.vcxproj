@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Gaea\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Gaea.h" />
     <ClInclude Include="src\Gaea\Core\Application.h" />
     <ClInclude Include="src\Gaea\Core\Core.h" />
@@ -592,6 +593,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Gaea\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Gaea\Core\Application.cpp" />
     <ClCompile Include="src\Gaea\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Gaea\ImGui\ImGuiLayer.cpp" />

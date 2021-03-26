@@ -1404,6 +1404,7 @@
     <ClInclude Include="src\Gaea\Renderer\OrthographicCameraController.h">
       <Filter>src\Gaea</Filter>
     </ClInclude>
+    <ClInclude Include="src\Gaea\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Gaea\ImGui\ImGuiBuild.cpp">
@@ -1481,5 +1482,6 @@
     <ClCompile Include="src\Gaea\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Gaea</Filter>
     </ClCompile>
+    <ClCompile Include="src\Gaea\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

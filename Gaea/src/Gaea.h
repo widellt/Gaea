@@ -21,6 +21,7 @@
 
 // Rendering ///////////////////////////
 #include "Gaea/Renderer/Renderer.h"
+#include "Gaea/Renderer/Renderer2D.h"
 #include "Gaea/Renderer/RenderCommand.h"
 
 	// Resources
